@@ -1,0 +1,62 @@
+<!--
+  Generated template for the InstallTabPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>安装</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding >
+  <div class="bar bar-subheader">
+    <ion-item>
+      <div class="scan">
+        <img (click)="scan()" src="assets/imgs/scan.png" style="width: 200px">
+      </div>
+      <!--<button  (click)="scan()" ion-button full><ion-icon name="qr-scanner"></ion-icon></button>-->
+      <!--<div>-->
+      <!--扫描结果:{{scanInfo | json }}-->
+      <!--</div>-->
+      <!--<button (click)="test1()" ion-button full>测试按钮</button>-->
+    </ion-item>
+  </div>
+
+  <ion-list >
+    <ion-list-header>
+      <ion-label>灯杆编号</ion-label>
+      <ion-label>所属街道</ion-label>
+      <ion-label>开灯调试</ion-label>
+    </ion-list-header>
+    <ion-item-sliding *ngFor="let item of alreadyInstallList" >
+        <ion-item>
+          <ion-label  (click)="openItem(item,'look')" >{{item.postNum}}</ion-label>
+          <ion-label  (click)="openItem(item,'look')">{{item.street}}</ion-label>
+          <ion-label><button (click)="debugDevice(item)" ion-button  ><ion-icon name="md-bulb" ></ion-icon></button></ion-label>
+        </ion-item>
+
+      <!--<ion-item-options>-->
+      <!--<button ion-button color="primary" (click)="sumbit(item)">-->
+      <!--完成-->
+      <!--</button>-->
+      <!--</ion-item-options>-->
+    </ion-item-sliding>
+
+  </ion-list>
+  <!--<ion-item   *ngIf="device!=null"  >-->
+  <!--&lt;!&ndash;<ion-item id="successInfo" [ngClass]="{'isHidden': device == null}"  >&ndash;&gt;-->
+  <!--<table>-->
+  <!--<tr><th><h1  *ngIf="device.deviceStatus==0">设备注册成功</h1> <h3  *ngIf="device.deviceStatus==1">设备已激活，请勿重新注册</h3></th></tr>-->
+  <!--<tr><td>设备序列号</td><td>{{device.snCode}}</td></tr>-->
+  <!--<tr><td>设备激活状态</td><td *ngIf="device.deviceStatus==0">未激活(未通电)</td><td *ngIf="device.deviceStatus==1">已激活</td></tr>-->
+  <!--<tr><td>灯杆编号</td><td>{{device.postNum}}</td></tr>-->
+  <!--<tr><td>经纬度</td><td>{{device.longitudeLatitude}}</td></tr>-->
+  <!--<tr><td>所属街道</td><td>{{device.street}}</td></tr>-->
+  <!--</table>-->
+  <!--</ion-item>-->
+</ion-content>

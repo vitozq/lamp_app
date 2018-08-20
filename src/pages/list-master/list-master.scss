@@ -1,0 +1,41 @@
+page-list-master {
+  .taskItem{
+    position:absolute;left: 50px;width: 20px;
+  }
+
+  .alreadyDone{
+    width:40px;position:absolute;right: 0px;
+  }
+
+  .bar-stable{
+    font-size: 16px;
+    color: #4c4c4c;
+    padding: 0px;
+  }
+  .head-tabs{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    .row{
+      padding: 0px;
+      .col{
+        padding:0px;
+      }
+    }
+    .head-tab {
+      padding: 0 5px;
+      align-self: center;
+      text-align: center;
+      line-height: 44px;
+      &.active{
+        color:color($colors,primary);
+        border-bottom: 2px solid color($colors,primary);
+      }
+    }
+  }
+
+//去掉每个item的下边框线
+  .list-md .item-block .item-inner{
+    border-bottom: none;
+  }
+}

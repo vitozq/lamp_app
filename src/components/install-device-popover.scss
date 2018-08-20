@@ -1,0 +1,65 @@
+install-device-popover{
+  .device-background{
+    background: url(../assets/imgs/popover/background2@2x.png);
+    background-size: cover;
+  }
+
+  .device-title{
+    font-size: 16px;
+    .img-background{
+      background-color: #fff;
+      border-radius: 50px 50px 0px 0px;
+      width: 100px;
+      height: 50px;
+      margin-top: -30px;
+    }
+    .main-img{
+      width: 40px;
+      position: absolute;
+      margin-top: -20px;
+      margin-left: -70px;
+    }
+  }
+
+  .device-info{
+    background: #f7f7f7;
+    padding: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    > *{
+      white-space: nowrap;
+      color: color($colors,darkgray);
+    }
+  }
+
+  button{
+    width: 100px !important;
+    height: 35px !important;
+    .button-inner{
+      color: #fff;
+    }
+  }
+
+  .color-0{
+    color: #000;
+  }
+  .color-new{
+    color: color($colors,primary);
+  }
+  .color-old{
+    color: #fdbe73;
+  }
+  .color-replace{
+    color: #3cb3c3;
+  }
+  .btn-color-new{
+    background-color: color($colors,primary);
+  }
+  .btn-color-old{
+    background-color: #fdbe73;
+  }
+  .btn-color-replace{
+    background-color: #3cb3c3;
+  }
+
+}

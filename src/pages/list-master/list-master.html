@@ -1,0 +1,71 @@
+<ion-header>
+  <ion-navbar class="bar-stable" text-center>
+    <div class="head-tabs">
+      <div class="head-tab" [ngClass]="{'active': status == 'new'}"
+           (click)="changeTab('new')" ><!--数据加载完成的时候才能切换tab-->
+        新任务
+      </div>
+      <div class="head-tab" [ngClass]="{'active': status == 'hasDone'}"
+         (click)="changeTab('hasDone')">
+        已完成
+      </div>
+    </div>
+    <!--<ion-title>{{ 'LIST_MASTER_TITLE' | translate }}</ion-title>
+
+    <ion-buttons end>
+      <button ion-button icon-only (click)="addItem()">
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-buttons>-->
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content style="background-color: #eeeeee">
+  <ion-list>
+
+    <!--{{this.url}}-->
+
+    <!--<ion-item>-->
+      <!--<button (click)="getCurrentPosition()" ion-button block>点我获取当前位置</button>-->
+      <!--<div>-->
+        <!--当前位置维度:{{currentPosition.latitude|json}}-->
+        <!--<br>-->
+        <!--当前位置经度:{{currentPosition.longitude|json}}-->
+      <!--</div>-->
+    <!--</ion-item>-->
+    <ion-label *ngIf="currentItems==''" style="text-align: center">目前暂无任务信息</ion-label>
+    <ion-item-sliding *ngFor="let item of currentItems;let i = index" style="margin-top: 11px;margin-left: 0px; ">
+      <button ion-item (click)="openItem(item)" >
+          <div style="position:relative">
+            <img src="assets/imgs/task/biaoti.png" style="width: 40px;">
+           <div style="position:absolute; z-index:2; left:10px; top:0px ;color: white">{{i+1}}</div>
+            <label style="position:absolute;margin-left: 20px;margin-top: 0px;">{{item.crtDate}}</label>
+            <img src="assets/imgs/task/alreadyDone.png"  class="alreadyDone" *ngIf="status=='hasDone'">
+          </div>
+        <!--<ion-avatar item-start>-->
+          <!--<img [src]="item.profilePic" />-->
+        <!--</ion-avatar>-->
+
+        <div style="border-top: 1px solid #eee;padding-top: 10px"><img src="assets/imgs/task/shebei.png" class="taskItem">
+          <label style="margin-left: 120px;">{{item.postNum}}</label>
+          <!--<p>{{item.deviceId}}</p>-->
+        </div>
+        <div><img src="assets/imgs/task/xiangmu.png" class="taskItem"><label style="margin-left: 120px;">{{item.projectName}}</label>
+          <!--<p>{{item.projectName}}</p>-->
+        </div>
+        <div><img src="assets/imgs/task/guzhang.png" class="taskItem"><label style="margin-left: 120px;">{{item.frMsg}}</label>
+          <!--<p>{{item.frMsg}}</p>-->
+        </div>
+        <!--<ion-note item-end *ngIf="item.note">{{item.note}}</ion-note>-->
+        <img src="assets/imgs/task/jiantou.png" style="width:30px;position: absolute;top:60px;right: 10px;">
+      </button>
+
+      <!--<ion-item-options>-->
+        <!--<button ion-button color="primary" (click)="sumbit(item)">-->
+          <!--完成-->
+        <!--</button>-->
+      <!--</ion-item-options>-->
+    </ion-item-sliding>
+  </ion-list>
+</ion-content>

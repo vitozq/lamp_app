@@ -1,0 +1,23 @@
+page-settings {
+    img{
+      width: 70px;
+      height: 70px;
+      //max-width: 100%;
+      //max-height: 100%;
+
+    }
+
+  .divPhoto{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    background-color: RGB(100,195,202);
+    height: 150px;
+  }
+
+  .divImg{
+    text-align:right;
+
+  }
+}

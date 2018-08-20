@@ -1,0 +1,58 @@
+page-login {
+  .splash-bg {
+    position: relative;
+    background: url('../assets/img/background.png') no-repeat transparent;
+    background-size: cover;
+    height: 30%;
+    z-index: 1;
+    background-repeat: repeat-x;
+    animation: animatedBackground 40s linear infinite;
+  }
+
+  @keyframes animatedBackground {
+    from { background-position: 0 0; }
+    to { background-position: 100% 0; }
+  }
+
+  .splash-info {
+    position: relative;
+    z-index: 2;
+    margin-top: -64px;
+    text-align: center;
+  }
+  .splash-logo {
+    margin: auto;
+    background: url('../assets/img/appLogo.png') repeat transparent;
+    background-size: 100%;
+    width: 128px;
+    height: 128px;
+  }
+  .splash-intro {
+    font-size: 18px;
+    font-weight: bold;
+    max-width: 80%;
+    margin: auto;
+  }
+
+  .login-list {
+    margin-top: 30px;
+    padding-left: 20px;
+    padding-right: 20px;
+    .item{
+      padding-left: 0px;
+      .label-md {
+        margin: 13px 8px 13px 2px;
+      }
+    }
+    img {
+      height: 24px;
+      width: auto;
+    }
+
+    .item-md.item-input.ng-valid.item-input-has-value:not(.input-has-focus):not(.item-input-has-focus) .item-inner, .item-md.item-input.ng-valid.input-has-value:not(.input-has-focus):not(.item-input-has-focus) .item-inner {
+      border-bottom-color: #dedede;
+      -webkit-box-shadow: inset 0 -1px 0 0 #dedede;
+      box-shadow: inset 0 -1px 0 0 #dedede;
+    }
+  }
+}

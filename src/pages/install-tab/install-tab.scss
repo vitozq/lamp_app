@@ -1,0 +1,17 @@
+page-install-tab {
+  .scan{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+  }
+
+  ion-navbar{
+
+    text-align: center;
+  }
+
+ .isHidden{
+    visibility: hidden;
+  }
+}
