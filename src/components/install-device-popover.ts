@@ -1,9 +1,6 @@
-/**
- * Created by hurong on 2018/7/9.
- * 拜访计划详情-项目信息-填写完成情况弹框
- */
 import {Component, EventEmitter} from '@angular/core';
 import {NavController, NavParams, ViewController} from 'ionic-angular';
+
 
 @Component({
   selector: 'install-device-popover',
@@ -113,11 +110,13 @@ export class InstallDevicePopover {
 
   constructor(public navCtrl:NavController ,public viewCtrl:ViewController,public navParams: NavParams) {
     this.device = navParams.get('device');
+
     var str =this.device.longitudeLatitude;
+    if(str!=null&&str!=""){
     this.strs=str.split(",");
+    }
     this.status=navParams.get("status");
     this.deviceStatus=this.device.deviceStatus;
-    console.log("转台"+this.deviceStatus);
     //util.hideLoading();
   }
 

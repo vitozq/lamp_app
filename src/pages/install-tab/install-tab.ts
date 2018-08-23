@@ -81,13 +81,14 @@ export class InstallTabPage {
     let seq =  this.api.post("getDeviceBySnCode",barcodeData);
     seq.subscribe((res: any) => {
       if(res!=null){
-        if(res.deviceId!=null&&res.deviceId!=''){
+        if(res.longitudeLatitude!=null&&res.longitudeLatitude!=''){
+          /** 禁止重复安装注册**/
           this.device=res;
           this.prompt("该设备已经被注册过，请勿重新安装!");
           this.showPopover({device:res,status:'old'});
         }else{
           this.navCtrl.push("InstallDevicePage",{barcodeData:barcodeData,modelNum:res.modelNum,street:this.street,installPower:this.installPower,status:'new'});
-            /** 禁止重复安装注册**/
+
           // if(res.deviceId==null||res.deviceId==''){
           //   this.navCtrl.push("InstallDevicePage",{barcodeData:barcodeData,modelNum:res.modelNum,street:this.result});
           // }
