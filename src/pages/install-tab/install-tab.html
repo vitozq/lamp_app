@@ -33,11 +33,11 @@
       <ion-label>所属街道</ion-label>
       <ion-label>开灯调试</ion-label>
     </ion-list-header>
-    <ion-item-sliding *ngFor="let item of alreadyInstallList" >
+    <ion-item-sliding *ngFor="let item of alreadyInstallList ;let i = index" >
         <ion-item>
-          <ion-label  (click)="openItem(item,'look')" >{{item.postNum}}</ion-label>
-          <ion-label  (click)="openItem(item,'look')">{{item.street}}</ion-label>
-          <ion-label><button (click)="debugDevice(item)" ion-button  ><ion-icon name="md-bulb" ></ion-icon></button></ion-label>
+          <ion-label  (click)="openItem(item,'look')" >{{item.device.postNum}}</ion-label>
+          <ion-label  (click)="openItem(item,'look')">{{item.device.street}}</ion-label>
+          <ion-label><button   [disabled]="!item.isClick" (click)="debugDevice(i,item)" ion-button ><ion-icon  *ngIf="item.isClick" name="md-bulb"></ion-icon>{{item.second}}</button></ion-label>
         </ion-item>
 
       <!--<ion-item-options>-->

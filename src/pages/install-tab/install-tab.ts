@@ -3,6 +3,7 @@ import {AlertController, IonicPage, NavController, NavParams, PopoverController,
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 import { Api} from '../../providers/api/api';
 import {InstallDevicePopover} from "../../components/install-device-popover";
+import {CommonService} from "../../service/common.service";
 
 /**
  * Generated class for the InstallTabPage page.
@@ -27,6 +28,7 @@ export class InstallTabPage {
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               private barcodeScanner:BarcodeScanner,
+              private commonService :CommonService,
               private api:Api,
               public  toastCtrl :ToastController,
               public popoverCtrl:PopoverController,
@@ -39,6 +41,7 @@ export class InstallTabPage {
     // this.device=this.forwardInstall.device;
     this.getInstallRecord(localStorage.getItem("username"));
     console.log('ionViewDidLoad InstallTabPage');
+
   }
   // scan(){
   //     this.forwardInstall.scan();
@@ -171,7 +174,7 @@ export class InstallTabPage {
   }
 
   //调试设备
-  debugDevice(item){
+  debugDevice(i,item){
      const confirm =this.alertCtrl.create({
        title: "",
        message: "是否进行调试(调试亮灯时长为1分钟)开灯?" ,
@@ -184,9 +187,24 @@ export class InstallTabPage {
          {
            text: '确定',
            handler: () => {
-             let seq=  this.api.post("debugDevice",{deviceId:item.deviceId,command:'0100',time:'1',watt:'50'});
+             let seq=  this.api.post("debugDevice",{deviceId:item.device.deviceId,command:'0100',time:'1',watt:'50'});
              seq.subscribe((res:any) =>{
-               console.log(JSON.stringify(res));
+               if(res.code==0||res.msg=='success') {
+                 this.commonService.showToast("开灯调试指令发送成功");
+                 item.isClick = false;
+                 item.second = 59;
+                 var interval = setInterval(() => {
+                   item.second--;
+                   if (item.second === 0) {
+                     clearInterval(interval);
+                     item.second = '';
+                     item.isClick = true;
+                   }
+                 }, 1000);
+                 console.log(JSON.stringify(res));
+               }else {
+                 this.commonService.showToast("开灯调试指令发送失败");
+               }
              },err=>{
                console.error('ERROR',err);
              });
@@ -196,4 +214,5 @@ export class InstallTabPage {
      });
     confirm.present();
   }
+
 }
